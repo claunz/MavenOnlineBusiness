@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>#{msgs.appTitle}</title>
+        <h:outputStylesheet library="css" name="main.css" />
+        <h:outputStylesheet library="css" name="bootstrap/bootstrap.min.css" />
+        <meta http-equiv="cache-control" content="no-cache" />
+    </h:head>
+
+    <h:body>
+        <div class="navbar navbar-default navbar-fixed-top text-center" role="navigation">
+            <ui:insert name="header">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <h2>#{msgs.appTitle}</h2>
+                    </div>
+                </div>
+            </ui:insert>
+        </div>
+        <div class="container-fluid">
+            <div class="row main-row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ui:insert name="leftsidebar">
+                        <ui:include src="leftsidebar.xhtml" />
+                    </ui:insert>
+                </div>
+                <div class="col-sm-9 col-md-10 main" >
+                    <ui:insert name="content">
+                        Main content goes here
+                    </ui:insert>
+                </div>
+            </div>
+        </div>
+        <h:outputScript name="js/jquery.js" />
+        <h:outputScript name="js/bootstrap.min.js" />
+    </h:body>
+</html>

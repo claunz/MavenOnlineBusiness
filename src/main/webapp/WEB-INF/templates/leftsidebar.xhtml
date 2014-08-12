@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:body>
+        <ui:composition>
+
+            <h:form styleClass="none">
+                    <ul class="nav nav-sidebar">
+                        <li>
+                            <h:commandLink value="Login" action="#{navcontrol.checkLogin()}"
+                                           rendered="#{!control.isLoggedIn}">
+                                <f:param name="url" value="loggedin" />
+                            </h:commandLink>
+                        </li>
+                        <li>
+                            <h:commandLink value="Products" action="#{productController.browseProducts()}" />
+                        </li>
+                        <li>
+                            <h:commandLink value="Add Products" action="#{productController.addProduct()}" />
+                        </li>
+                        <li>
+                            <h:commandLink value="Orders" action="#{control.checkLogin()}"
+                                           rendered="#{!control.isLoggedIn}">
+                                <f:param name="url" value="loggedin" />
+                            </h:commandLink>
+                        </li>
+                        <li>
+                            <h:commandLink value="Customers" action="#{control.checkLogin()}"
+                                           rendered="#{!control.isLoggedIn}">
+                                <f:param name="url" value="loggedin" />
+                            </h:commandLink>
+                        </li>
+                    </ul>
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+
