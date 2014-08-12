@@ -1,0 +1,6 @@
+*.lst
+target/maven-archiver/pom.properties
+*.war
+target/MavenOnlineBusiness-1.0-SNAPSHOT.war
+target/maven-archiver/pom.properties
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst

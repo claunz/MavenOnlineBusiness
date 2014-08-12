@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\utils\MessageUtil.java
 C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\dao\ProductDao.java
 C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\entity\Product.java
@@ -8,3 +9,18 @@ C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\s
 C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\control\OrderController.java
 C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\dao\IProductDao.java
 C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\control\ProductController.java
+=======
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/control/UserController.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/entity/Product.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/IProductDao.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/control/CartController.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/ProductDao.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/utils/HibernateUtil.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/entity/OrderLine.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/ICartDao.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/control/NavigationContoller.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/control/ProductController.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/entity/Cart.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/control/OrderController.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/utils/MessageUtil.java
+>>>>>>> origin/Development
