@@ -8,6 +8,6 @@ import shop.entity.Product;
 
 public interface ICartDao {
         public void addOderLine(OrderLine orderLine);
-	public void removeOrderLine(int productId);
+	public void removeOrderLine(int orderLineId);
 	public Collection<OrderLine> getCartOrderLines();
 }

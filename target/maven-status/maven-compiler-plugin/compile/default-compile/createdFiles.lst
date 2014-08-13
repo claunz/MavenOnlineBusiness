@@ -2,9 +2,11 @@ shop/control/CartController.class
 shop/entity/Product.class
 shop/entity/OrderLine.class
 shop/control/NavigationContoller.class
+shop/entity/User.class
 shop/control/OrderController.class
 shop/dao/ProductDao.class
 shop/control/UserController.class
+shop/entity/Order.class
 shop/control/ProductController.class
 shop/utils/MessageUtil.class
 shop/dao/IProductDao.class

@@ -10,8 +10,10 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.connection.pool_size">1</property>
+    <mapping class="shop.entity.User" />
     <mapping class="shop.entity.Product" />
     <mapping class="shop.entity.Cart" />
+    <mapping class="shop.entity.Order" />
     <mapping class="shop.entity.OrderLine" />
   </session-factory>
 </hibernate-configuration>

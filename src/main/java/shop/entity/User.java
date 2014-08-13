@@ -6,10 +6,13 @@
 
 package shop.entity;
 
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,6 +29,13 @@ public class User {
     public String password;
     public String confPassword;
     public String userType;
+    
+    @OneToMany(mappedBy = "user")
+    private Collection<Order> orders;
+    
+    @OneToMany(mappedBy = "user")
+    private Collection<Cart> carts;
+    
     public User(){
         
     }
@@ -74,6 +84,22 @@ public class User {
 
     public void setConfPassword(String confPassword) {
         this.confPassword = confPassword;
+    }
+
+    public Collection<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Collection<Order> orders) {
+        this.orders = orders;
+    }
+
+    public Collection<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(Collection<Cart> carts) {
+        this.carts = carts;
     }
 
     
