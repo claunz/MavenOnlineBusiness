@@ -5,11 +5,11 @@ import java.util.Collection;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -18,16 +18,13 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private Date date;
+    private Date date = new Date();
     
-    @ManyToOne
-    @JoinColumn(name="userId")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="userId", unique = true, nullable = false, updatable = false)
     private User user;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="cart_orderlines", 
-            joinColumns = {@JoinColumn(name="cartId", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name="orderLineId", referencedColumnName = "id")})
+    @OneToMany( mappedBy = "cart", fetch = FetchType.LAZY)
     private Collection<OrderLine> orderLines;
 
     public Cart() {

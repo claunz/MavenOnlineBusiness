@@ -3,13 +3,12 @@ package shop.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class OrderLine {
@@ -23,21 +22,24 @@ public class OrderLine {
     @JoinColumn(name="productId")
     private Product product;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(name = "cart_orderlines", 
-            joinColumns = {@JoinColumn(name = "orderLineId", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "cartId", referencedColumnName = "id")})
+    @ManyToOne
+    @JoinColumn(name = "cartId", nullable = false)
     private Cart cart;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(name = "order_orderlines", 
-            joinColumns = {@JoinColumn(name = "orderLineId", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "orderId", referencedColumnName = "id")})
+   
+    /*
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "orderId")
     private Order order;
-
+*/
     public OrderLine() {
     }
 
+    public OrderLine(int quantity, Product product) {
+        this.quantity = quantity;
+        this.price = product.getPrice();
+        this.product = product;
+    }
+    
     public int getId() {
         return id;
     }
@@ -77,7 +79,7 @@ public class OrderLine {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
-
+/*
     public Order getOrder() {
         return order;
     }
@@ -85,6 +87,6 @@ public class OrderLine {
     public void setOrder(Order order) {
         this.order = order;
     }
-    
+    */
     
 }

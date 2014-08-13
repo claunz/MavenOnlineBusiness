@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,12 +29,8 @@ public class Order {
     @JoinColumn(name = "userId")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "order_orderlines",
-            joinColumns = {
-                @JoinColumn(name = "orderId", referencedColumnName = "id")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "orderLineId", referencedColumnName = "id")})
+    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "orderId")
     private Collection<OrderLine> orderLines;
 
     public Order() {

@@ -1,6 +1,7 @@
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/IProductDao.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/entity/BillingAddress.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/utils/HibernateUtil.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/OrderLineDao.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/ICartDao.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/control/NavigationContoller.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/UserDao.java
@@ -13,6 +14,7 @@
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/control/CartController.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/entity/User.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/ProductDao.java
+/Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/IOrderLineDao.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/IAddressDao.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/entity/ShippingAddress.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/BillingAddressDao.java
