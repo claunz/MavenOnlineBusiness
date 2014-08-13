@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\utils\MessageUtil.java
+C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\dao\ProductDao.java
+C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\entity\Product.java
+C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\control\CartController.java
+C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\control\UserController.java
+C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\control\NavigationContoller.java
+C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\utils\HibernateUtil.java
+C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\control\OrderController.java
+C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\dao\IProductDao.java
+C:\Users\Benybifa\Documents\NetBeansProjects\MavenOnlineBusiness\src\main\java\shop\control\ProductController.java
+=======
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/control/UserController.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/entity/Product.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/dao/IProductDao.java
@@ -13,3 +25,4 @@
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/entity/Order.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/control/OrderController.java
 /Users/coco/Documents/workspace/MavenOnlineBusiness/src/main/java/shop/utils/MessageUtil.java
+>>>>>>> origin/Development
