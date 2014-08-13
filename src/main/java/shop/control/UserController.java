@@ -1,8 +1,8 @@
-
 package shop.control;
 
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import shop.dao.AddressDao;
 import shop.dao.BillingAddressDao;
@@ -15,16 +15,18 @@ import shop.entity.ShippingAddress;
 import shop.entity.User;
 
 @Named
-@RequestScoped
-public class UserController implements Serializable{
+@SessionScoped
+public class UserController implements Serializable {
+
     private static final String login = "login";
     private static final String register = "register";
-private IUserDao userDao;
-private User user;
-private IAddressDao billinAddressDao;
-private IAddressDao shippinAddressDao;
-private BillingAddress billingAddress;
-private ShippingAddress shippingAddress;
+    private IUserDao userDao;
+    private User user;
+    private IAddressDao billinAddressDao;
+    private IAddressDao shippinAddressDao;
+    private BillingAddress billingAddress;
+    private ShippingAddress shippingAddress;
+
     public UserController() {
     }
 
@@ -51,24 +53,25 @@ private ShippingAddress shippingAddress;
     public void setShippingAddress(ShippingAddress shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
-    
-    public String register(){
+
+    public String register() {
         return null;
     }
-    public String doRegister(){
-     
+
+    public String doRegister() {
+
         userDao = new UserDao();
-        
+
         billinAddressDao = new BillingAddressDao();
         shippinAddressDao = new ShippingAddressDao();
-        if(!user.password.equalsIgnoreCase(user.confPassword)){
-       return register;
+        if (!user.password.equalsIgnoreCase(user.confPassword)) {
+            return register;
         }
-         userDao.saveUser(user);
+        userDao.saveUser(user);
         billinAddressDao.saveAddress(billingAddress);
-        
+
         shippinAddressDao.saveAddress(shippingAddress);
         return login;
     }
-      
+
 }

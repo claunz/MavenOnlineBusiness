@@ -6,20 +6,33 @@
 
 package shop.entity;
 
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import static javax.persistence.FetchType.LAZY;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
  *
  * @author Benybifa
  */
 @Entity
+@PrimaryKeyJoinColumn(name = "id")
 public class ShippingAddress extends Address {
- 
-    
+    @ManyToOne(cascade = { MERGE, PERSIST }, fetch = LAZY)
+    @JoinColumn(name = "userId")
+    private User user;
     public ShippingAddress(){
-        
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
 }

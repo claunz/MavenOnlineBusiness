@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -17,6 +16,8 @@ public class OrderLine {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private int quantity;
+    private double price;
     
     @ManyToOne
     @JoinColumn(name="productId")
@@ -27,8 +28,12 @@ public class OrderLine {
             joinColumns = {@JoinColumn(name = "orderLineId", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "cartId", referencedColumnName = "id")})
     private Cart cart;
-    private int quantity;
-    private double price;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "order_orderlines", 
+            joinColumns = {@JoinColumn(name = "orderLineId", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "orderId", referencedColumnName = "id")})
+    private Order order;
 
     public OrderLine() {
     }
@@ -71,6 +76,14 @@ public class OrderLine {
 
     public void setCart(Cart cart) {
         this.cart = cart;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
     
     

@@ -29,6 +29,9 @@ public abstract class Address {
     public String zip;
     public String Country;
 
+    public Address() {
+    }
+    
     public int getId() {
         return id;
     }
