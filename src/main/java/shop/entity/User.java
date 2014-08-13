@@ -11,13 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-<<<<<<< HEAD
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-=======
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
->>>>>>> Benyam
 
 /**
  *
@@ -34,7 +30,7 @@ public class User {
     public String password;
     public String confPassword;
     public String userType;
-<<<<<<< HEAD
+
     
     @OneToMany(mappedBy = "user")
     private Collection<Order> orders;
@@ -42,14 +38,14 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Collection<Cart> carts;
     
-=======
+
     @OneToOne
     @PrimaryKeyJoinColumn
     public ShippingAddress shippingAddress;
     @OneToOne
     @PrimaryKeyJoinColumn
     public BillingAddress billingAddress;
->>>>>>> Benyam
+
     public User(){
         
     }
