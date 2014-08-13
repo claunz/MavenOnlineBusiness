@@ -1,14 +1,62 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
-<h:body>
-	<ui:composition>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:body>
+        <ui:composition>
             <h:form>
-                Right side
+                <div class="cart panel panel-yellow">
+                    <div class="panel-heading ">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h3>Cart</h3>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">#{cartDao.orderLines.size()}</div>
+                                <div>Items</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cart-body">
+                        <h:dataTable value="#{cartDao.orderLines}" var="orderLine" 
+                                     styleClass="table table-hover"
+                                     headerClass="panel-header"
+                                     rowClasses="resultTableOddRow,resultTableEvenRow">
+                            <h:column>
+                                #{orderLine.product.name}
+                            </h:column>
+                            <h:column>
+                                <h:outputText value="#{orderLine.price }" >
+                                    <f:convertNumber currencySymbol="$" type="currency" />
+                                </h:outputText>
+
+                            </h:column>
+                            <h:column >
+                                <h:commandLink value="x" styleClass="btn btn-sm btn-danger  pull-right" action="#{cartController.removeOrderLine()}"  >
+                                    <f:param name="orderLineId" value="#{orderLine.id}"/>
+                                </h:commandLink>
+                            </h:column>
+                            <f:facet name="footer" class="panel-footer">
+                                <h:commandLink value="Check Out" styleClass="btn btn-warning" >
+                                    
+                                </h:commandLink>
+                                <div class="pull-right">Total : 
+                                    <h:outputText value="#{cartDao.cartTotal}" >
+                                        <f:convertNumber currencySymbol="$" type="currency" />
+                                    </h:outputText>
+                                </div>
+
+                            </f:facet>
+                        </h:dataTable>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+
             </h:form>
         </ui:composition>
-</h:body>
+    </h:body>
 </html>

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import shop.dao.IProductDao;
 import shop.dao.ProductDao;
@@ -19,7 +20,9 @@ public class ProductController implements Serializable {
     private static final String add_product = "addProduct";
     private static final String view_product = "viewProduct";
     private Product product;
-    private IProductDao productDao;
+    
+    @Inject
+    private ProductDao productDao;
     private List<Product> productList;
 
     public ProductController() {
@@ -39,7 +42,6 @@ public class ProductController implements Serializable {
     }
 
     public String saveProduct() {
-        productDao = new ProductDao();
         productDao.saveProduct(product);
         return view_product;
     }
@@ -48,6 +50,8 @@ public class ProductController implements Serializable {
         Map<String, String> params = facesContext.getExternalContext().getRequestParameterMap();
         int productId = Integer.valueOf(params.get("productId"));
         if (productId > 0) {
+            product = productDao.loadProduct(productId);
+            productDao.deleteProduct(product);
             return browser_products;
         }
         return null;
@@ -60,7 +64,6 @@ public class ProductController implements Serializable {
         Map<String, String> params = facesContext.getExternalContext().getRequestParameterMap();
         int productId = Integer.valueOf(params.get("productId"));
         if (productList == null) {
-            productDao = new ProductDao();
             productList = (List<Product>) productDao.getProducts();
         }
         if (productId > 0) {
@@ -71,7 +74,6 @@ public class ProductController implements Serializable {
     }
 
     public String browseProducts() {
-        productDao = new ProductDao();
         productList = (List<Product>) productDao.getProducts();
         System.out.println(" In get product list " + productList.size());
         return browser_products;
@@ -79,7 +81,6 @@ public class ProductController implements Serializable {
 
     public List<Product> getProductList() {
         if (productList == null) {
-            productDao = new ProductDao();
             productList = (List<Product>) productDao.getProducts();
         }
         return productList;

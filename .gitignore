@@ -1,2 +1,22 @@
+<<<<<<< HEAD
+
+*.class
+=======
+*.lst
+target/maven-archiver/pom.properties
+*.war
+target/MavenOnlineBusiness-1.0-SNAPSHOT.war
+target/maven-archiver/pom.properties
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/classes/shop/entity/User.class
+
+*.class
+
+*.dpf
+>>>>>>> JeanClaude
+
+*.class
+
+*.class
 
 *.class
