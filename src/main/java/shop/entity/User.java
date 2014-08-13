@@ -7,12 +7,13 @@
 package shop.entity;
 
 import java.util.Collection;
+import static javax.persistence.CascadeType.REMOVE;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -29,6 +30,7 @@ public class User {
     public String password;
     public String confPassword;
     public String userType;
+
     
     @OneToMany(mappedBy = "user")
     private Collection<Order> orders;
@@ -36,6 +38,14 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Collection<Cart> carts;
     
+
+    
+    @OneToOne(mappedBy="user", cascade = REMOVE)
+    public ShippingAddress shippingAddress;
+    
+    @OneToOne(mappedBy="user", cascade = REMOVE)
+    public BillingAddress billingAddress;
+
     public User(){
         
     }
@@ -100,6 +110,22 @@ public class User {
 
     public void setCarts(Collection<Cart> carts) {
         this.carts = carts;
+    }
+
+    public ShippingAddress getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(ShippingAddress shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+
+    public BillingAddress getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(BillingAddress billingAddress) {
+        this.billingAddress = billingAddress;
     }
 
     
