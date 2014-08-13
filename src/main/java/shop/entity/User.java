@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
  *
@@ -26,6 +28,12 @@ public class User {
     public String password;
     public String confPassword;
     public String userType;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    public ShippingAddress shippingAddress;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    public BillingAddress billingAddress;
     public User(){
         
     }

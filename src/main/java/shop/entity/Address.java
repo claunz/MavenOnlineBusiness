@@ -21,7 +21,7 @@ import javax.persistence.InheritanceType;
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Address {
      @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+     @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
     public String street;
     public String city;
