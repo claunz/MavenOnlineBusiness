@@ -1,8 +1,10 @@
 package shop.control;
 
 import java.io.Serializable;
+import java.util.Map;
 import java.util.regex.Pattern;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import shop.dao.UserDao;
@@ -21,13 +23,15 @@ public class UserController implements Serializable {
     //private static final String register = "register";
     private static final String register_user = "register";
     private boolean isLoggedIn;
-
+    private FacesContext facesContext;
+    
     @Inject
     private UserDao userDao;
     private User user = new User();
     private String requestedUrl = null;
     MessageProvider mp = new MessageProvider();
     private String selectedPlanet;
+    private String userDetails;
 
     public UserController() {
         // user = new User();
@@ -157,5 +161,19 @@ public class UserController implements Serializable {
     public String changePlanet(String newValue) {
         selectedPlanet = newValue;
         return selectedPlanet;
+    }
+
+    public String getShowUserDetails() {
+        facesContext = FacesContext.getCurrentInstance();
+        Map<String, String> params = facesContext.getExternalContext().getRequestParameterMap();
+        String page = params.get("page");
+        
+        if ("".equals(page) || page == null) {
+            return "";
+        } else {
+            StringBuilder sb = new StringBuilder();
+            sb.append(user.getStreet()).append(user.getCity()).append(user.getZip()).append(user.getCountry());
+            return "Address : " + sb.toString();
+        }
     }
 }

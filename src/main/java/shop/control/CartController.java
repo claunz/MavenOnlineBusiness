@@ -106,5 +106,8 @@ public class CartController implements Serializable{
         this.orderLines = orderLines;
     }
     
+    public void ajaxRemoveOrderLine(){
+        
+    }
     
 }
