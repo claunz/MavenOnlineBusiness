@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:corejsf="http://corejsf.com/facelets">
     <h:body>
         <ui:composition>
 
@@ -33,6 +34,9 @@
                                 <f:param name="url" value="loggedin" />
                             </h:commandLink>
                         </li>
+                        <li> <corejsf:online name="earth" 
+                            image="#{resource['images:Earth.gif']}"/>
+                            </li>
                     </ul>
             </h:form>
         </ui:composition>
