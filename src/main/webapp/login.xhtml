@@ -15,18 +15,20 @@
                     <h:form >
                         <div class="login-panel panel panel-default" style="margin-top: 25%;">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Please Sign In</h3>
+                                <h3 class="panel-title">#{msgs.plsSinIn}</h3>
                             </div>
                             <div class="panel-body">
 
                                 <fieldset>
                                     <div class="form-group">
+                                        #{msgs.email}
                                         <h:panelGroup>
                                             <h:inputText  id="email" styleClass="form-control" value="#{userController.user.email}" required="true" requiredMessage="#{msgs.erruserms}"/>
                                             <h:message for="email" styleClass="errors"/>
                                         </h:panelGroup>
                                     </div>
                                     <div class="form-group">
+                                        #{msgs.password}
                                         <h:panelGroup>
                                             <h:inputSecret id="password" styleClass="form-control" value="#{userController.user.password}" required="true" requiredMessage="#{msgs.errpassrms}"/>
                                             <h:message for="password" styleClass="errors"/>
@@ -37,14 +39,14 @@
                                     </div>
                                     <!-- Change this to a button or input when using this as a form -->
 
-                                    <h:commandButton value="Login" action="#{userController.dologin}" styleClass="btn btn-lg btn-success btn-block" />
+                                    <h:commandButton value="#{msgs.login}" action="#{userController.dologin}" styleClass="btn btn-lg btn-success btn-block" />
 
                                 </fieldset>
-                                <h:commandLink value="Sign Up" action="#{userController.register()}"
+                                <h:commandLink value="#{msgs.signup}" action="#{userController.register()}"
                                                rendered="#{! userController.isLoggedIn}" immediate="true" styleClass="pull-left">
                                     <f:param name="url" value="loggedin" />
                                 </h:commandLink>
-                                <h:commandLink value="Cancel" action="#{productController.browseProducts()}" immediate="true" styleClass="pull-right" />
+                                <h:commandLink value="#{msgs.cancel}" action="#{productController.browseProducts()}" immediate="true" styleClass="pull-right" />
 
                             </div>
 
