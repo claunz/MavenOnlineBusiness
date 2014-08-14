@@ -60,3 +60,7 @@ target/classes/shop/entity/User.class
 target/maven-archiver/pom.properties
 
 *.class
+
+*.class
+
+*.class
