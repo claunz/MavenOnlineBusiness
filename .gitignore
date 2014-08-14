@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Development
 <<<<<<< HEAD
 
 *.class
@@ -46,6 +49,11 @@ target/classes/shop/entity/User.class
 *.class
 
 *.class
+<<<<<<< HEAD
 >>>>>>> Development
+=======
+>>>>>>> Development
+
+*.class
 
 *.class
