@@ -7,15 +7,16 @@
     <h:body>
         <ui:composition template="/WEB-INF/templates/maintemplate.xhtml" >
             <ui:define name="content">
-                <h1 class="page-header">List of Orders</h1>
                 <h:form >
-                    test
-                    <h:dataTable value="#{orderController.userOrders}" var="order"
-                                 styleClass="table table-hover"
-                                 headerClass="panel-header"
-                                 rowClasses="resultTableOddRow,resultTableEvenRow">
+                    <h:dataTable value="#{orderController.orderList}" var="order"
+                                   styleClass="table table-hover"
+                                     headerClass="panel-header"
+                                     rowClasses="resultTableOddRow,resultTableEvenRow">
                         <h:column>
-                            Test
+                            <f:facet name="header">
+                                Orders
+                            </f:facet>
+                            
                             <h:outputText value="#{order.id}" />
                         </h:column>         
                         <h:column>

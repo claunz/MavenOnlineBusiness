@@ -2,6 +2,7 @@
 package shop.control;
 
 import java.util.Collection;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -30,9 +31,12 @@ public class OrderController {
         return orderDao;
     }
 
-    public Collection<Order> getUserOrders() {
-        return userOrders;
+    public List<Order> getOrderList(){
+        System.out.println("-------- in get orders "+userOrders.size());
+        userOrders = orderDao.getUserOrders();
+        return (List<Order>) userOrders;
     }
     
-    
 }
+
+    
