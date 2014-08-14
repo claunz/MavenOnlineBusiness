@@ -9,5 +9,6 @@ public interface IProductDao {
     public void saveProduct(Product product);
 	public void updateProduct(Product product);
 	public Product loadProduct(int productId);
+        public void deleteProduct(Product product);
 	public Collection<Product> getProducts();
 }
