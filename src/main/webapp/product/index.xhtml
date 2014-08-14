@@ -43,7 +43,7 @@
                                 <f:facet name="header" >
                                     Actions
                                 </f:facet>
-                                <h:commandLink value="Add to cart" action="#{cartController.addOrderLine()}" styleClass="btn btn-sm btn-primary btn-margin-4" >
+                                <h:commandLink value="Add to cart" action="#{cartController.addOrderLine()}"  styleClass="btn btn-sm btn-primary btn-margin-4" >
                                     <f:param name="productId" value="#{product.id}"/>
                                 </h:commandLink>
                                 <h:commandLink value="Edit" action="#{productController.addProduct()}" rendered="#{userController.userManager}" styleClass="btn btn-sm btn-success btn-margin-4" >
