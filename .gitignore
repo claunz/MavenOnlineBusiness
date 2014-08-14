@@ -66,3 +66,5 @@ target/maven-archiver/pom.properties
 *.class
 
 *.class
+
+target/MavenOnlineBusiness-1.0-SNAPSHOT/order/view.xhtml

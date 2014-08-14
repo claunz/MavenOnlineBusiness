@@ -87,5 +87,12 @@ public class OrderDao implements IOrderDao, Serializable{
         return userOrders;
         
     }
-    
+    public double getTotalAmount(){
+        double total = 0;
+        for(OrderLine orderLine : orderLines)
+        {
+            total += orderLine.getPrice();
+        }
+        return total;
+    }
 }
