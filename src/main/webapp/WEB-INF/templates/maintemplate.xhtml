@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title>#{msgs.appTitle}</title>
@@ -17,6 +18,18 @@
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <h2>#{msgs.appTitle}</h2>
+                    </div>
+                    <div class="text-center pull-right">
+                        <h:form>
+                            
+                            <h:commandLink value="Welcome #{userController.user.firstName} #{userController.user.lastName}" >
+                                <f:param name="page" value="viewdetails" />
+                                <f:ajax event="click"  render="output" />
+                            </h:commandLink> 
+                            <div>
+                                 <h:outputText id="output" value="#{userController.showUserDetails}" />
+                            </div>
+                        </h:form>
                     </div>
                 </div>
             </ui:insert>
@@ -33,9 +46,11 @@
                         Main content goes here
                     </ui:insert>
                 </div>
-                <div class="col-md-3">
+                <div  class="col-md-3">
                     <ui:insert name="rightsidebar">
-                        <ui:include src="rightsidebar.xhtml" />
+                        <div id="cart_container">
+                            <ui:include src="rightsidebar.xhtml" />
+                        </div>
                     </ui:insert>
                 </div>
             </div>

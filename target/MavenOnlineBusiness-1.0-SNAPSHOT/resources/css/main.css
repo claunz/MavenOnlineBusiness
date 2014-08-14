@@ -18,6 +18,10 @@ body {
     z-index: 1000;
     float: left;
 }
+.errors{
+    color: red;
+    font-size: 11px;
+}
 .navbar-fixed-top {
     border: 0 none;
 }
@@ -68,4 +72,7 @@ nav-sidebar > li > a {
 }
 .panel-yellow .table{
     margin-bottom: 0;
+}
+.about{
+    margin-left: 15px;
 }

@@ -5,45 +5,53 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-         <h:outputStylesheet library="css" name="bootstrap/bootstrap.min.css" />
-        <meta http-equiv="cache-control" content="no-cache" />
+        <h:outputStylesheet library="css" name="bootstrap/bootstrap.min.css" />
+        <h:outputStylesheet library="css" name="main.css" />
     </h:head>
     <h:body>
         <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default" style="margin-top: 25%;">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
-                    </div>
-                    <div class="panel-body">
-                        <h:form >
-                            <fieldset>
-                                <div class="form-group">
-                                    <h:inputText  id="email" styleClass="form-control" value="#{userController.user.email}"/>
-                                </div>
-                                <div class="form-group">
-                                    <h:inputSecret id="password" styleClass="form-control" value="#{userController.user.password}"/>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <h:selectBooleanCheckbox value="Remember Me" id="remember" />Remember Me
-                                    </label>
-                                </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                              
-                                <h:commandButton value="Login" action="#{userController.dologin}" styleClass="btn btn-lg btn-success btn-block" />
-                                
-                            </fieldset>
-                            <h:commandLink value="Sign Up" action="#{userController.register()}"
-                                           rendered="#{! userController.isLoggedIn}">
-                                <f:param name="url" value="loggedin" />
-                            </h:commandLink>
-                        </h:form>
-                    </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <h:form >
+                        <div class="login-panel panel panel-default" style="margin-top: 25%;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Please Sign In</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <fieldset>
+                                    <div class="form-group">
+                                        <h:panelGroup>
+                                            <h:inputText  id="email" styleClass="form-control" value="#{userController.user.email}" required="true" requiredMessage="#{msgs.erruserms}"/>
+                                            <h:message for="email" styleClass="errors"/>
+                                        </h:panelGroup>
+                                    </div>
+                                    <div class="form-group">
+                                        <h:panelGroup>
+                                            <h:inputSecret id="password" styleClass="form-control" value="#{userController.user.password}" required="true" requiredMessage="#{msgs.errpassrms}"/>
+                                            <h:message for="password" styleClass="errors"/>
+                                        </h:panelGroup>
+                                    </div>
+                                    <div class="checkbox">
+
+                                    </div>
+                                    <!-- Change this to a button or input when using this as a form -->
+
+                                    <h:commandButton value="Login" action="#{userController.dologin}" styleClass="btn btn-lg btn-success btn-block" />
+
+                                </fieldset>
+                                <h:commandLink value="Sign Up" action="#{userController.register()}"
+                                               rendered="#{! userController.isLoggedIn}" immediate="true" styleClass="pull-left">
+                                    <f:param name="url" value="loggedin" />
+                                </h:commandLink>
+                                <h:commandLink value="Cancel" action="#{productController.browseProducts()}" immediate="true" styleClass="pull-right" />
+
+                            </div>
+
+                        </div>
+                    </h:form>
                 </div>
             </div>
         </div>
-    </div>
     </h:body>
 </html>

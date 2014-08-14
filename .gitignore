@@ -1,10 +1,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> Development
 <<<<<<< HEAD
+=======
+>>>>>>> JeanClaude
 
 *.class
 =======
@@ -50,9 +53,44 @@ target/classes/shop/entity/User.class
 
 *.class
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Development
 =======
 >>>>>>> Development
+=======
+
+*.class
+
+*.class
+
+*.lst
+
+*.war
+
+*.gif
+
+*.class
+
+target/maven-archiver/pom.properties
+
+*.class
+
+*.class
+
+*.class
+
+*.class
+
+target/MavenOnlineBusiness-1.0-SNAPSHOT/order/view.xhtml
+>>>>>>> JeanClaude
+
+*.class
+
+*.class
+
+target/classes/shop/dao/CartDao.class
+
+*.class
 
 *.class
 

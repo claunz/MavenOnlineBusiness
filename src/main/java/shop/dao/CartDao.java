@@ -9,6 +9,7 @@ package shop.dao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -17,7 +18,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import shop.control.UserController;
 import shop.entity.Cart;
+import shop.entity.Order;
 import shop.entity.OrderLine;
 import shop.utils.HibernateUtil;
 
@@ -32,6 +35,8 @@ public class CartDao implements ICartDao, Serializable{
     private Cart cart;
     @Inject
     private CartDao cartDao;
+    @Inject
+    private UserController userController;
     private Collection<OrderLine> orderLines = new ArrayList<OrderLine>();
 
     public CartDao() {
@@ -143,13 +148,16 @@ public class CartDao implements ICartDao, Serializable{
         this.orderLines = orderLines;
     }
     
-    public Collection<OrderLine> getOrderLines() {  
+    public Collection<OrderLine> getOrderLines() { 
+        if(!userController.getIsLoggedIn())
+            return null;
+        System.out.println("--------User Id "+userController.getUser().getId() );
         Transaction transaction = null;
         Session session = sessionFactory.openSession();
         try {
             transaction = session.beginTransaction();
-            Query query =  session.createQuery("from OrderLine O ");
-            //query.setParameter("userId", cartDao.getCart().getUser().id);
+            Query query =  session.createQuery("Select OL from OrderLine OL Join OL.cart C where C.user.id = :userId");
+            query.setParameter("userId", userController.getUser().getId() );
             orderLines = (List<OrderLine>) query.list(); 
             transaction.commit();
 
@@ -172,5 +180,34 @@ public class CartDao implements ICartDao, Serializable{
             cartTotal += orderLine.getPrice();
         }
         return cartTotal;
+    }
+    
+    public void generateOrderFromCart(){
+        Transaction transaction = null;
+        Session session = sessionFactory.openSession();
+        try {
+            transaction = session.beginTransaction();
+            Order order = new Order();
+            Date today = new Date();
+            order.setOrderDate(today);
+            order.setTotalAmount(getCartTotal());
+            order.setUser(userController.getUser());
+            session.save(order);
+            for(OrderLine orderLine : orderLines){
+                orderLine.setCart(null); 
+                orderLine.setOrder(order);
+                session.saveOrUpdate(orderLine);
+            }
+            transaction.commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            //e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        
     }
 }

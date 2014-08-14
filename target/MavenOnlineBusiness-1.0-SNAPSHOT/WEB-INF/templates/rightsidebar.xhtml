@@ -5,8 +5,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:body>
-        <ui:composition>
-            <h:form>
+        <ui:composition >
+            <h:form rendered="#{!userController.userManager}">
                 <div class="cart panel panel-yellow">
                     <div class="panel-heading ">
                         <div class="row">
@@ -35,12 +35,12 @@
 
                             </h:column>
                             <h:column >
-                                <h:commandLink value="x" styleClass="btn btn-sm btn-danger  pull-right" action="#{cartController.removeOrderLine()}"  >
+                                <h:commandLink styleClass="glyphicon glyphicon-trash  pull-right" action="#{cartController.removeOrderLine()}"  >
                                     <f:param name="orderLineId" value="#{orderLine.id}"/>
                                 </h:commandLink>
                             </h:column>
                             <f:facet name="footer" class="panel-footer">
-                                <h:commandLink value="Check Out" styleClass="btn btn-warning" >
+                                <h:commandLink value="Check Out" action="#{cartController.checkOut()}" styleClass="btn btn-warning" >
                                     
                                 </h:commandLink>
                                 <div class="pull-right">Total : 
@@ -53,9 +53,7 @@
                         </h:dataTable>
                         <div class="clearfix"></div>
                     </div>
-
                 </div>
-
             </h:form>
         </ui:composition>
     </h:body>
