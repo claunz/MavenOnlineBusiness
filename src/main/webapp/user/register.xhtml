@@ -76,10 +76,9 @@
                             <h:message for="pass" styleClass="cont"/>
                         </h:panelGroup>
                     </h:panelGrid>
-             
-
-               
                     <h:commandButton value="#{msgs.save}" action="#{userController.doRegister}"/>
+                    <h:commandButton value="Cancel" action="#{productController.browseProducts()}" immediate="true"/>
+      
                 </h:form>
 
 

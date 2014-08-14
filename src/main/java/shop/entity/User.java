@@ -8,7 +8,6 @@ package shop.entity;
 
 import java.util.Collection;
 import javax.persistence.CascadeType;
-import static javax.persistence.CascadeType.REMOVE;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,7 +42,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Collection<Order> orders;
     
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
 
     public User(){

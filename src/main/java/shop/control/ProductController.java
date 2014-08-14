@@ -7,7 +7,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import shop.dao.IProductDao;
 import shop.dao.ProductDao;
 import shop.entity.Product;
 
@@ -43,7 +42,8 @@ public class ProductController implements Serializable {
 
     public String saveProduct() {
         productDao.saveProduct(product);
-        return view_product;
+        productList.add(product);
+        return browser_products;
     }
     public String deleteProduct(){
         facesContext = FacesContext.getCurrentInstance();

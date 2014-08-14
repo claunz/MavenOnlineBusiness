@@ -23,14 +23,14 @@ public class OrderLine {
     private Product product;
     
     @ManyToOne
-    @JoinColumn(name = "cartId", nullable = false)
+    @JoinColumn(name = "cartId")
     private Cart cart;
    
-    /*
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "orderId")
     private Order order;
-*/
+
     public OrderLine() {
     }
 
@@ -79,7 +79,7 @@ public class OrderLine {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
-/*
+
     public Order getOrder() {
         return order;
     }
@@ -87,6 +87,6 @@ public class OrderLine {
     public void setOrder(Order order) {
         this.order = order;
     }
-    */
+    
     
 }
