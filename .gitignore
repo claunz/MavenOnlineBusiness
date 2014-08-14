@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+*.class
+=======
+=======
+>>>>>>> JeanClaude
 *.lst
 target/maven-archiver/pom.properties
 *.war
@@ -9,3 +16,47 @@ target/classes/shop/entity/User.class
 *.class
 
 *.dpf
+<<<<<<< HEAD
+>>>>>>> JeanClaude
+
+*.class
+
+*.class
+
+*.class
+=======
+>>>>>>> JeanClaude
+
+*.class
+
+*.class
+
+*.class
+
+*.class
+
+*.class
+
+*.class
+
+*.class
+
+*.class
+
+*.class
+
+*.class
+
+*.class
+
+*.lst
+
+*.war
+
+*.gif
+
+*.class
+
+target/maven-archiver/pom.properties
+
+*.class
