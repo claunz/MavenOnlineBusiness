@@ -66,6 +66,7 @@ target/maven-archiver/pom.properties
 *.class
 
 *.class
+<<<<<<< HEAD
 
 target/MavenOnlineBusiness-1.0-SNAPSHOT/order/view.xhtml
 
@@ -74,3 +75,15 @@ target/MavenOnlineBusiness-1.0-SNAPSHOT/order/view.xhtml
 *.class
 
 *.class
+=======
+>>>>>>> MergeBenyIntoJean
+
+*.class
+
+*.class
+
+*.class
+
+target/MavenOnlineBusiness-1.0-SNAPSHOT/WEB-INF/classes/messages.properties
+
+target/MavenOnlineBusiness-1.0-SNAPSHOT/WEB-INF/classes/shop/dao/ICartDao.class
