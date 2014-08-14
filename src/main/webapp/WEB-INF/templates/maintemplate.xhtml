@@ -18,6 +18,9 @@
                     <div class="navbar-header">
                         <h2>#{msgs.appTitle}</h2>
                     </div>
+                    <div class="text-center pull-right">
+                        <h3><h:outputText value="Welcome  #{userController.user.firstName} #{userController.user.lastName}" rendered="#{userController.isLoggedIn}" /></h3>
+                    </div>
                 </div>
             </ui:insert>
         </div>

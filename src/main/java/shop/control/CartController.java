@@ -3,45 +3,48 @@
 package shop.control;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.hibernate.Hibernate;
 import shop.dao.CartDao;
-import shop.dao.ICartDao;
 import shop.dao.ProductDao;
 import shop.dao.UserDao;
 import shop.entity.Cart;
 import shop.entity.OrderLine;
 import shop.entity.Product;
 import shop.entity.User;
+import shop.utils.MessageUtil;
 
 @Named
 @SessionScoped
 public class CartController implements Serializable{
     private FacesContext facesContext;
     private static final String view_order = "viewOrder";
+    private static final String login = "login";
+    private static final String payment_form = "payment_form";
     private Cart cart;
     @Inject
     private CartDao cartDao;
     private User user;
     @Inject
     private UserController userController;
+    @Inject
+    private UserDao userDao;
     private List<OrderLine> orderLines;
-    
-    static{
-        
-    }
     
     public CartController() {
     }
     public String addOrderLine(){
-        UserDao userDao = new UserDao();
-        user = userDao.loadUser(1);
+        if(userController.isUserManager()){
+            MessageUtil.displayError("You need to be logged in as customer to add to cart ");
+            userController.doLogout();
+        }
+        else if(!userController.getIsLoggedIn())
+            return login;
+        user = userController.getUser();
         facesContext = FacesContext.getCurrentInstance();
         Map<String, String> params = facesContext.getExternalContext().getRequestParameterMap();
         String productIdString = params.get("productId");
@@ -73,6 +76,12 @@ public class CartController implements Serializable{
             cartDao.removeOrderLine(orderLineId);
         }
     }
+    
+    public String checkOut(){
+        cartDao.generateOrderFromCart();
+        return view_order;
+    }
+    
     public String viewCart(){
         return null;
     }

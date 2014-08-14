@@ -40,6 +40,13 @@
          <to-view-id>/order/index.xhtml</to-view-id>
       </navigation-case>
   </navigation-rule>
+   <navigation-rule>
+   	  <from-view-id>/*</from-view-id>
+      <navigation-case>
+         <from-outcome>viewOrder</from-outcome>
+         <to-view-id>/order/view.xhtml</to-view-id>
+      </navigation-case>
+  </navigation-rule>
   <navigation-rule>
    	  <from-view-id>/*</from-view-id>
       <navigation-case>
