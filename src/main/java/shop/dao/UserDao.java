@@ -5,22 +5,25 @@
  */
 package shop.dao;
 
+import java.io.Serializable;
+import java.util.List;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import shop.entity.Product;
 import shop.entity.User;
 import shop.utils.HibernateUtil;
 
-/**
- *
- * @author Benybifa
- */
-public class UserDao implements IUserDao {
+@Named
+@SessionScoped
+public class UserDao implements IUserDao, Serializable {
 
     private static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    private User user;
+    //Collection<User> userlist = new ArrayList<User>();
+
     
     @Override
     public void saveUser(User user) {
@@ -28,7 +31,7 @@ public class UserDao implements IUserDao {
         Session session = sessionFactory.getCurrentSession();
         try {
             transaction = session.beginTransaction();
-            session.persist(user);
+            session.save(user);
             transaction.commit();
         } catch (RuntimeException e) {
             if (transaction != null) {
@@ -36,8 +39,8 @@ public class UserDao implements IUserDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+            //session.flush();
+            //session.close();
         }
     }
 
@@ -60,6 +63,31 @@ public class UserDao implements IUserDao {
             session.flush();
             session.close();
         }
+        return user;
+    }
+    @Override
+    public User getUserByEmail(String email) {
+        User user = null;
+        Transaction transaction = null;
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("SELECT a FROM User a WHERE a.email = :email");
+            query.setParameter("email", email);
+            List<User> userlist = query.list();
+            if (!userlist.isEmpty()) {
+                user = userlist.get(0);
+            }
+
+            transaction.commit();
+
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        
         return user;
     }
 }

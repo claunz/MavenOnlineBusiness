@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <ui:composition template="/WEB-INF/templates/maintemplate.xhtml" >
+            <ui:define name="content">
+                <h1 class="page-header">Registration page</h1>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        #{msgs.firstName}:
+                        <h:panelGroup>
+                            <h:inputText  id="fname" value="#{userController.user.firstName}"/>
+                            <h:message for="fname" styleClass="errors"/>
+                        </h:panelGroup>
+                        #{msgs.lastName}:
+                        <h:panelGroup>
+                            <h:inputText id="lname" value="#{userController.user.lastName}"/>
+                            <h:message for="lname" styleClass="errors"/>
+                        </h:panelGroup>
+                        #{msgs.email}:
+                        <h:panelGroup>
+                            <h:inputText id="email" value="#{userController.billingAddress.email}" required="true" 
+
+                                         requiredMessage="#{msgs.emailErrMsg}" 
+                                         validatorMessage="#msgs.emailValErr">
+                                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@+[\w\.-]+[a-zA-Z0-9].+(com|net|org)" />
+                            </h:inputText>
+                            <h:message for="email" styleClass="errors"/>
+
+                        </h:panelGroup>
+
+                        #{msgs.password}:
+                        <h:panelGroup>
+                            <h:inputSecret id="pass" value="#{userController.user.password}"/>
+                            <h:message for="pass" styleClass="errors"/>
+                        </h:panelGroup>
+
+                        #{msgs.confPassword}:
+                        <h:panelGroup>
+                            <h:inputSecret id="conpas" value="#{userController.user.confPassword}"/> 
+                            <h:message for="conpas" styleClass="errors"/>
+                        </h:panelGroup>
+                        <hr/>
+                    </h:panelGrid>
+                    <h3>"#{msgs.bilAdress}</h3>
+                    <h:panelGrid columns="2">
+                        #{msgs.street}: 
+                        <h:panelGroup>
+                            <h:inputText id="str" value="#{userController.billingAddress.street}"/>
+                            <h:message for="str" styleClass="errors"/>
+                        </h:panelGroup>
+
+                        #{msgs.city}:
+                        <h:panelGroup>
+                            <h:inputText id="cit" value="#{userController.billingAddress.city}"/>
+                            <h:message for="cit" styleClass="errors"/>
+                        </h:panelGroup>
+                        #{msgs.state}:
+                        <h:panelGroup>
+                            <h:inputText id="stat" value="#{userController.billingAddress.state}"/>
+                            <h:message for="stat" styleClass="errors"/>
+                        </h:panelGroup>
+                        #{msgs.zip}:
+                        <h:panelGroup>
+                            <h:inputText id="zip" value="#{userController.billingAddress.zip}"/>
+                            <h:message for="zip" styleClass="errors"/>
+                        </h:panelGroup>
+                        #{msgs.country}:
+                        <h:panelGroup>
+                            <h:inputText id="cout" value="#{userController.billingAddress.country}"/>
+                            <h:message for="pass" styleClass="cont"/>
+                        </h:panelGroup>
+                    </h:panelGrid>
+             
+
+               
+                    <h:commandButton value="#{msgs.save}" action="#{userController.doRegister}"/>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

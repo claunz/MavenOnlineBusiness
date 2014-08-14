@@ -1,88 +1,86 @@
+
 package shop.control;
 
 import java.io.Serializable;
+import java.util.Map;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import org.hibernate.Hibernate;
-import shop.dao.BillingAddressDao;
-import shop.dao.IAddressDao;
+
 import shop.dao.IUserDao;
-import shop.dao.ShippingAddressDao;
 import shop.dao.UserDao;
-import shop.entity.BillingAddress;
-import shop.entity.ShippingAddress;
+
 import shop.entity.User;
 
 @Named
 @SessionScoped
 public class UserController implements Serializable {
-
+    private static final String browser_products = "browseProducts";
     private static final String login = "login";
-    private static final String register = "register";
+    //private static final String register = "register";
+    private static final String register_user = "register";
     private boolean isLoggedIn;
     private IUserDao userDao;
     private User user;
-    private IAddressDao billinAddressDao;
-    private IAddressDao shippinAddressDao;
-    private BillingAddress billingAddress;
-    private ShippingAddress shippingAddress;
-    
-    
+    private String requestedUrl=null;
+
     public UserController() {
-       doLogin();
+        user = new User();
     }
 
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public boolean getIsLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setIsLoggedIn(boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
+    }
+
+    public void setUer(User user) {
         this.user = user;
     }
 
-    public BillingAddress getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(BillingAddress billingAddress) {
-        this.billingAddress = billingAddress;
-    }
-
-    public ShippingAddress getShippingAddress() {
-        return shippingAddress;
-    }
-
-    public void setShippingAddress(ShippingAddress shippingAddress) {
-        this.shippingAddress = shippingAddress;
-    }
-
     public String register() {
-        return null;
+        user = new User();
+
+        return register_user;
     }
 
     public String doRegister() {
 
         userDao = new UserDao();
 
-        billinAddressDao = new BillingAddressDao();
-        shippinAddressDao = new ShippingAddressDao();
-        if (!user.password.equalsIgnoreCase(user.confPassword)) {
-            return register;
+        if (!user.getPassword().equalsIgnoreCase(user.getConfPassword())) {
+            return register_user;
         }
+        
         userDao.saveUser(user);
-        billinAddressDao.saveAddress(billingAddress);
 
-        shippinAddressDao.saveAddress(shippingAddress);
         return login;
     }
-    
-    public void doLogin(){
-        if(isLoggedIn == false){
-            userDao = new UserDao();
-            user = userDao.loadUser(1);
-            System.out.println("--In userController -> doLogin--");
-            isLoggedIn = true;
-        }
+
+    public String login() {
+        user = new User();
+
+        return login;
     }
 
+    public String dologin() {
+           //user = new User();
+
+        userDao = new UserDao();
+        
+        if ((user.getPassword()).equals(userDao.getUserByEmail(user.getEmail()).getPassword())) {
+             isLoggedIn = true;
+             return browser_products;
+        }
+        return login;
+    }
+    public boolean isUserManager(){
+        return false;
+    }
 }

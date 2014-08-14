@@ -7,6 +7,7 @@ shop/dao/ProductDao.class
 shop/entity/ShippingAddress.class
 shop/control/ProductController.class
 shop/utils/MessageUtil.class
+shop/dao/OrderLineDao.class
 shop/dao/AddressDao.class
 shop/entity/BillingAddress.class
 shop/dao/IProductDao.class
@@ -21,5 +22,6 @@ shop/control/NavigationContoller.class
 shop/control/OrderController.class
 shop/control/UserController.class
 shop/entity/Order.class
+shop/dao/IOrderLineDao.class
 shop/dao/ICartDao.class
 shop/dao/UserDao.class
