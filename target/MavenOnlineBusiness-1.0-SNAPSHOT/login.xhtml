@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
          <h:outputStylesheet library="css" name="bootstrap/bootstrap.min.css" />
         <meta http-equiv="cache-control" content="no-cache" />
@@ -19,10 +20,10 @@
                         <h:form >
                             <fieldset>
                                 <div class="form-group">
-                                    <h:inputText  id="email" styleClass="form-control" />
+                                    <h:inputText  id="email" styleClass="form-control" value="#{userController.user.email}"/>
                                 </div>
                                 <div class="form-group">
-                                    <h:inputSecret id="password" styleClass="form-control" />
+                                    <h:inputSecret id="password" styleClass="form-control" value="#{userController.user.password}"/>
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -30,8 +31,14 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <h:commandButton value="Login" styleClass="btn btn-lg btn-success btn-block" />
+                              
+                                <h:commandButton value="Login" action="#{userController.dologin}" styleClass="btn btn-lg btn-success btn-block" />
+                                
                             </fieldset>
+                            <h:commandLink value="Sign Up" action="#{userController.register()}"
+                                           rendered="#{! userController.isLoggedIn}">
+                                <f:param name="url" value="loggedin" />
+                            </h:commandLink>
                         </h:form>
                     </div>
                 </div>

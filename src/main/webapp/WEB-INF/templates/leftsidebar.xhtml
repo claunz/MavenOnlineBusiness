@@ -28,8 +28,8 @@
                             </h:commandLink>
                         </li>
                         <li>
-                            <h:commandLink value="Customers" action="#{control.checkLogin()}"
-                                           rendered="#{!control.isLoggedIn}">
+                            <h:commandLink value="Sign Up" action="#{userController.register()}"
+                                           rendered="#{! userController.isLoggedIn}">
                                 <f:param name="url" value="loggedin" />
                             </h:commandLink>
                         </li>

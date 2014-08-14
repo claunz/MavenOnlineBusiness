@@ -22,11 +22,13 @@
                         </h:panelGroup>
                         #{msgs.email}:
                         <h:panelGroup>
-                            <h:inputText id="email" value="#{userController.billingAddress.email}" required="true" 
+
+                            <h:inputText id="email" value="#{userController.user.email}" required="true" 
+
 
                                          requiredMessage="#{msgs.emailErrMsg}" 
                                          validatorMessage="#msgs.emailValErr">
-                                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@+[\w\.-]+[a-zA-Z0-9].+(com|net|org)" />
+                               <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                             </h:inputText>
                             <h:message for="email" styleClass="errors"/>
 
@@ -49,28 +51,28 @@
                     <h:panelGrid columns="2">
                         #{msgs.street}: 
                         <h:panelGroup>
-                            <h:inputText id="str" value="#{userController.billingAddress.street}"/>
+                            <h:inputText id="str" value="#{userController.user.street}"/>
                             <h:message for="str" styleClass="errors"/>
                         </h:panelGroup>
 
                         #{msgs.city}:
                         <h:panelGroup>
-                            <h:inputText id="cit" value="#{userController.billingAddress.city}"/>
+                            <h:inputText id="cit" value="#{userController.user.city}"/>
                             <h:message for="cit" styleClass="errors"/>
                         </h:panelGroup>
                         #{msgs.state}:
                         <h:panelGroup>
-                            <h:inputText id="stat" value="#{userController.billingAddress.state}"/>
+                            <h:inputText id="stat" value="#{userController.user.states}"/>
                             <h:message for="stat" styleClass="errors"/>
                         </h:panelGroup>
                         #{msgs.zip}:
                         <h:panelGroup>
-                            <h:inputText id="zip" value="#{userController.billingAddress.zip}"/>
+                            <h:inputText id="zip" value="#{userController.user.zip}"/>
                             <h:message for="zip" styleClass="errors"/>
                         </h:panelGroup>
                         #{msgs.country}:
                         <h:panelGroup>
-                            <h:inputText id="cout" value="#{userController.billingAddress.country}"/>
+                            <h:inputText id="cout" value="#{userController.user.country}"/>
                             <h:message for="pass" styleClass="cont"/>
                         </h:panelGroup>
                     </h:panelGrid>
@@ -79,6 +81,7 @@
                
                     <h:commandButton value="#{msgs.save}" action="#{userController.doRegister}"/>
                 </h:form>
+
 
             </ui:define>
         </ui:composition>

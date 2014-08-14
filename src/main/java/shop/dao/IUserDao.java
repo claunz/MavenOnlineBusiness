@@ -15,4 +15,5 @@ import shop.entity.User;
 public interface IUserDao {
    public void saveUser(User user);
    public User loadUser(int userId);
+   public User getUserByEmail(String email);
 }

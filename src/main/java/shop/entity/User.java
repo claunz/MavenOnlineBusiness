@@ -26,28 +26,25 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int id;
-    public String firstName;
-    public String lastName;
-    public String password;
-    
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String password;
     @Transient
-    public String confPassword;
-    public String userType;
-
+    private String confPassword;
+    private String userType;
+     private String email;
+    private String street;
+    private String city;
+    private String states;
+    private String zip;
+    private String Country;
     
     @OneToMany(mappedBy = "user")
     private Collection<Order> orders;
     
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Cart cart;
-
-    
-    @OneToOne(mappedBy="user", cascade = REMOVE)
-    public ShippingAddress shippingAddress;
-    
-    @OneToOne(mappedBy="user", cascade = REMOVE)
-    public BillingAddress billingAddress;
 
     public User(){
         
@@ -58,16 +55,13 @@ public class User {
         this.lastName = lastName;
     }
     
-    public User(String firstName, String lastName, String password, String confPassword, String userType, Collection<Order> orders, Collection<Cart> carts, ShippingAddress shippingAddress, BillingAddress billingAddress) {
+    public User(String firstName, String lastName, String password, String confPassword, String userType, Collection<Order> orders) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.confPassword = confPassword;
         this.userType = userType;
         this.orders = orders;
-        this.cart = cart;
-        this.shippingAddress = shippingAddress;
-        this.billingAddress = billingAddress;
     }
     
     public String getUserType() {
@@ -134,20 +128,52 @@ public class User {
         this.cart = cart;
     }
 
-    public ShippingAddress getShippingAddress() {
-        return shippingAddress;
+    public String getEmail() {
+        return email;
     }
 
-    public void setShippingAddress(ShippingAddress shippingAddress) {
-        this.shippingAddress = shippingAddress;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public BillingAddress getBillingAddress() {
-        return billingAddress;
+    public String getStreet() {
+        return street;
     }
 
-    public void setBillingAddress(BillingAddress billingAddress) {
-        this.billingAddress = billingAddress;
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStates() {
+        return states;
+    }
+
+    public void setStates(String states) {
+        this.states = states;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getCountry() {
+        return Country;
+    }
+
+    public void setCountry(String Country) {
+        this.Country = Country;
     }
 
     
