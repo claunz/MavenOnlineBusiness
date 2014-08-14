@@ -11,11 +11,11 @@
                     <div class="panel-heading ">
                         <div class="row">
                             <div class="col-xs-3">
-                                <h3>Cart</h3>
+                                <h3>#{msgs.cart}</h3>
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">#{cartDao.orderLines.size()}</div>
-                                <div>Items</div>
+                                <div>#{msgs.items}</div>
                             </div>
                         </div>
                     </div>
@@ -40,10 +40,10 @@
                                 </h:commandLink>
                             </h:column>
                             <f:facet name="footer" class="panel-footer">
-                                <h:commandLink value="Check Out" action="#{cartController.checkOut()}" styleClass="btn btn-warning" >
+                                <h:commandLink value="#{msgs.checkout}" action="#{cartController.checkOut()}" styleClass="btn btn-warning" >
                                     
                                 </h:commandLink>
-                                <div class="pull-right">Total : 
+                                <div class="pull-right">#{msgs.total} : 
                                     <h:outputText value="#{cartDao.cartTotal}" >
                                         <f:convertNumber currencySymbol="$" type="currency" />
                                     </h:outputText>
