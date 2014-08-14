@@ -20,14 +20,17 @@
                         <h2>#{msgs.appTitle}</h2>
                     </div>
                     <div class="text-center pull-right">
-                        <h:form>
-                            
-                            <h:commandLink value="Welcome #{userController.user.firstName} #{userController.user.lastName}" >
-                                <f:param name="page" value="viewdetails" />
-                                <f:ajax event="click"  render="output" />
-                            </h:commandLink> 
-                            <div>
-                                 <h:outputText id="output" value="#{userController.showUserDetails}" />
+                        <h:form rendered="#{userController.isLoggedIn}">
+                            <div class="text-right text-info">
+                                <div>
+                                    <h:commandLink value="Welcome #{userController.user.firstName} #{userController.user.lastName}" >
+                                        <f:param name="page" value="viewdetails" />
+                                        <f:ajax  event="click"  render="output" />
+                                    </h:commandLink> 
+                                </div>
+                                <div>
+                                    <h:outputText id="output" value="#{userController.showUserDetails}" />
+                                </div>
                             </div>
                         </h:form>
                     </div>
