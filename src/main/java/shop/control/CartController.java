@@ -11,7 +11,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import shop.dao.CartDao;
 import shop.dao.ProductDao;
-import shop.dao.UserDao;
 import shop.entity.Cart;
 import shop.entity.OrderLine;
 import shop.entity.Product;
@@ -24,15 +23,12 @@ public class CartController implements Serializable{
     private FacesContext facesContext;
     private static final String view_order = "viewOrder";
     private static final String login = "login";
-    private static final String payment_form = "payment_form";
     private Cart cart;
     @Inject
     private CartDao cartDao;
     private User user;
     @Inject
     private UserController userController;
-    @Inject
-    private UserDao userDao;
     private List<OrderLine> orderLines;
     
     public CartController() {

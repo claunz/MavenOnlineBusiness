@@ -32,7 +32,6 @@ public class OrderController {
     }
 
     public List<Order> getOrderList(){
-        System.out.println("-------- in get orders "+userOrders.size());
         userOrders = orderDao.getUserOrders();
         return (List<Order>) userOrders;
     }

@@ -24,7 +24,7 @@ public class Cart {
     @JoinColumn(name="userId", unique = true, nullable = false, updatable = false)
     private User user;
     
-    @OneToMany( mappedBy = "cart", fetch = FetchType.LAZY)
+    @OneToMany( mappedBy = "cart", fetch = FetchType.LAZY, orphanRemoval = true)
     private Collection<OrderLine> orderLines;
 
     public Cart() {

@@ -9,6 +9,7 @@ package shop.dao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -187,10 +188,13 @@ public class CartDao implements ICartDao, Serializable{
         try {
             transaction = session.beginTransaction();
             Order order = new Order();
+            Date today = new Date();
+            order.setOrderDate(today);
+            order.setTotalAmount(getCartTotal());
             order.setUser(userController.getUser());
             session.save(order);
             for(OrderLine orderLine : orderLines){
-                //orderLine.setCart(null);
+                orderLine.setCart(null); 
                 orderLine.setOrder(order);
                 session.saveOrUpdate(orderLine);
             }
