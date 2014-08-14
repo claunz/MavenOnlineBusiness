@@ -18,7 +18,7 @@
 
                             <h:column>
                                 <f:facet name="header">
-                                    Name
+                                    #{msgs.prodName}
                                 </f:facet>
                                 <h:commandLink action="#{productController.viewProduct()}" >
                                     <h:outputText value="#{product.name}" />
@@ -27,7 +27,7 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    Price
+                                    #{msgs.price}
                                 </f:facet>
                                  <h:outputText value="#{product.price}" >
                                     <f:convertNumber currencySymbol="$" type="currency" />
@@ -35,21 +35,22 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    Description
+                                    #{msgs.description}
                                 </f:facet>
                                 #{product.description}
                             </h:column>
                             <h:column >
                                 <f:facet name="header" >
-                                    Actions
+                                    #{msgs.action}
                                 </f:facet>
-                                <h:commandLink value="Add to cart" action="#{cartController.addOrderLine()}"  styleClass="btn btn-sm btn-primary btn-margin-4" >
+                                <h:commandLink value="#{msgs.AddToCart}" action="#{cartController.addOrderLine()}" styleClass="btn btn-sm btn-primary btn-margin-4" >
+
                                     <f:param name="productId" value="#{product.id}"/>
                                 </h:commandLink>
-                                <h:commandLink value="Edit" action="#{productController.addProduct()}" rendered="#{userController.userManager}" styleClass="btn btn-sm btn-success btn-margin-4" >
+                                <h:commandLink value="#{msgs.Edit}" action="#{productController.addProduct()}" rendered="#{userController.userManager}" styleClass="btn btn-sm btn-success btn-margin-4" >
                                     <f:param name="productId" value="#{product.id}"/>
                                 </h:commandLink>
-                                <h:commandLink value="Delete" styleClass="btn btn-sm btn-danger btn-margin-4" rendered="#{userController.userManager}" action="#{productController.deleteProduct()}" >
+                                <h:commandLink value="#{msgs.Delete}" styleClass="btn btn-sm btn-danger btn-margin-4" rendered="#{userController.userManager}" action="#{productController.deleteProduct()}" >
                                     <f:param name="productId" value="#{product.id}"/>
                                 </h:commandLink>
                             </h:column>

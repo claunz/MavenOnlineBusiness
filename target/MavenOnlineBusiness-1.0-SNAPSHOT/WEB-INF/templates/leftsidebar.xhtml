@@ -11,29 +11,29 @@
             <h:form styleClass="none">
                 <ul class="nav nav-sidebar">
                     <li>
-                        <h:commandLink value="Login" action="#{navcontrol.checkLogin()}"
+                        <h:commandLink value="#{msgs.login}" action="#{navcontrol.checkLogin()}"
                                        rendered="#{!userController.isLoggedIn}">
                             <f:param name="url" value="loggedin" />
                         </h:commandLink>
-                        <h:commandLink value="Logout" action="#{userController.doLogout()}"
+                        <h:commandLink value="#{msgs.logout}" action="#{userController.doLogout()}"
                                        rendered="#{userController.isLoggedIn}">
                             <f:param name="url" value="loggedin" />
                         </h:commandLink>
                     </li>
                     <li>
-                        <h:commandLink value="Products" action="#{productController.browseProducts()}" />
+                        <h:commandLink value="#{msgs.product} " action="#{productController.browseProducts()}" />
                     </li>
                     <li>
-                        <h:commandLink value="Add Product" action="#{productController.addProduct()}" rendered="#{userController.userManager}" />
+                        <h:commandLink value="#{msgs.addProd}" action="#{productController.addProduct()}" rendered="#{userController.userManager}" />
                     </li>
                     <li>
-                        <h:commandLink value="Orders" action="#{orderController.browseOrders()}"
+                        <h:commandLink value="#{msgs.order}" action="#{orderController.browseOrders()}"
                                        rendered="#{userController.isLoggedIn}">
                             <f:param name="url" value="loggedin" />
                         </h:commandLink>
                     </li>
                     <li>
-                        <h:commandLink value="Sign Up" action="#{userController.register()}"
+                        <h:commandLink value="#{msgs.signup}" action="#{userController.register()}"
                                        rendered="#{!userController.isLoggedIn}">
                             <f:param name="url" value="loggedin" />
                         </h:commandLink>

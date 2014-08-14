@@ -7,29 +7,29 @@
     <h:body>
          <ui:composition template="/WEB-INF/templates/maintemplate.xhtml" >
             <ui:define name="content">
-                <h1>#{productController.product.name} Details</h1>
+                <h1>#{productController.product.name} </h1>
                 <div>
                     <h:form>
-                        <h:commandLink value="Add to cart" styleClass="btn btn-sm btn-primary btn-margin-right btn-margin-4"   />
-                        <h:commandLink value="Edit" action="#{productController.addProduct()}" styleClass="btn btn-sm btn-success btn-margin-4" >
+                        <h:commandLink value="#{msgs.AddToCart}" styleClass="btn btn-sm btn-primary btn-margin-right btn-margin-4"   />
+                        <h:commandLink value="#{msgs.Edit}" action="#{productController.addProduct()}" styleClass="btn btn-sm btn-success btn-margin-4" >
                             <f:param name="productId" value="#{productController.product.id}"/>
                         </h:commandLink>
-                        <h:commandLink value="Delete" action="#{productController.deleteProduct()}" styleClass="btn btn-sm btn-danger btn-margin-4">
+                        <h:commandLink value="#{msgs.Delete}" action="#{productController.deleteProduct()}" styleClass="btn btn-sm btn-danger btn-margin-4">
                             <f:param name="productId" value="#{productController.product.id}" />
                         </h:commandLink>
                     </h:form>
                 </div>
                 <div>
                     <div>
-                        Price :
+                        #{msgs.price} :
                         <h:outputText value="#{productController.product.price}" />
                     </div>
                     <div>
-                        Quantity available :
+                        #{msgs.quantAvail}:
                         <h:outputText value="#{productController.product.quantity}" />
                     </div>
                     <div>
-                        Description :
+                        #{msgs.description} :
                         <h:outputText value="#{productController.product.description}" />
                     </div>
                     
