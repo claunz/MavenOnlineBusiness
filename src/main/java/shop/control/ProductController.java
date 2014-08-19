@@ -74,12 +74,14 @@ public class ProductController implements Serializable {
     }
 
     public String browseProducts() {
+        System.out.println(" In get product list ======= " );
         productList = (List<Product>) productDao.getProducts();
-        System.out.println(" In get product list " + productList.size());
+        
         return browser_products;
     }
 
     public List<Product> getProductList() {
+        System.out.println(" In get product list ======= " );
         if (productList == null) {
             productList = (List<Product>) productDao.getProducts();
         }

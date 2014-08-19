@@ -5,9 +5,13 @@ shop/dao/ProductDao.class
 shop/control/ProductController.class
 shop/utils/MessageUtil.class
 shop/dao/OrderLineDao.class
+shop/rule/RulesException.class
 shop/dao/IProductDao.class
+shop/rule/MessagesUtil.class
+shop/dao/OrderDao.class
 shop/entity/Cart.class
 shop/utils/HibernateUtil.class
+shop/dao/IOrderDao.class
 shop/control/CartController.class
 shop/entity/Product.class
 shop/entity/OrderLine.class
@@ -16,5 +20,6 @@ shop/control/OrderController.class
 shop/control/UserController.class
 shop/entity/Order.class
 shop/dao/IOrderLineDao.class
+shop/rule/MessageProvider.class
 shop/dao/ICartDao.class
 shop/dao/UserDao.class

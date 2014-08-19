@@ -28,14 +28,14 @@ public class OrderDao implements IOrderDao, Serializable{
     private static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     @Inject
     private UserController userController;
-    private Collection<OrderLine> orderLines = new ArrayList<OrderLine>();
-    private Collection<Order> userOrders = new ArrayList<Order>();
+    private Collection<OrderLine> orderLines = new ArrayList<>();
+    private Collection<Order> userOrders = new ArrayList<>();
 
     public OrderDao() {
     }
     
     @Override
-    public Collection<OrderLine> getOrderItems() {
+    public Collection<OrderLine> getOrderItems(int orderId) {
         
         if(!userController.getIsLoggedIn())
             return null;
@@ -65,12 +65,11 @@ public class OrderDao implements IOrderDao, Serializable{
     public Collection<Order> getUserOrders() {
         if(!userController.getIsLoggedIn())
             return null;
-        System.out.println("----------inside get user orders");
         Transaction transaction = null;
         Session session = sessionFactory.openSession();
         try {
             transaction = session.beginTransaction();
-            Query query =  session.createQuery("Select O from Order O Join where O.user.id = :userId");
+            Query query =  session.createQuery("Select ORD from Order ORD where ORD.user.id = :userId  ");
             query.setParameter("userId", userController.getUser().getId() );
             userOrders = (List<Order>) query.list(); 
             transaction.commit();
@@ -79,7 +78,6 @@ public class OrderDao implements IOrderDao, Serializable{
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace();
         } finally {
             session.flush();
             session.close();
@@ -95,4 +93,6 @@ public class OrderDao implements IOrderDao, Serializable{
         }
         return total;
     }
+
+   
 }

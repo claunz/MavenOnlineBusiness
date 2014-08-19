@@ -15,6 +15,6 @@ import shop.entity.OrderLine;
  * @author coco
  */
 public interface IOrderDao {
-    public Collection<OrderLine> getOrderItems();
+    public Collection<OrderLine> getOrderItems(int orderId);
     public Collection<Order> getUserOrders();
 }
